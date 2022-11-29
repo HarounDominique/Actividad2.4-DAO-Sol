@@ -9,6 +9,8 @@ import es.teis.ud2.controller.EmpleadoController;
 import es.teis.ud2.exceptions.InstanceNotFoundException;
 import es.teis.ud2.model.Departamento;
 import es.teis.ud2.model.Empleado;
+import es.teis.ud2.model.dao.account.AccountSQLServerDao;
+import es.teis.ud2.model.dao.account.IAccountDao;
 import es.teis.ud2.model.dao.departamento.DepartamentoSQLServerDao;
 import es.teis.ud2.model.dao.departamento.IDepartamentoDao;
 import es.teis.ud2.model.dao.empleado.EmpleadoSQLServerDao;
@@ -33,7 +35,8 @@ public class Main {
         //probar a encontrar un departamento que no existe
         //     verDetalleDepartamento(666);
         //getDepartmentNamesByLoc("DALLAS");
-        createEmpleado();
+        //createEmpleado();
+        transferirDinero(1, 2, new BigDecimal(300));
     }
 
     private static void mostrarDepartamentos() {
@@ -98,5 +101,10 @@ public class Main {
             ex.printStackTrace();
             System.err.println("Ha ocurrido una excepción: " + ex.getMessage());
         }
+    }
+
+    private static void transferirDinero(int accIdOrigen, int accIdDestino, BigDecimal cantidad) {
+        IAccountDao accountDao = new AccountSQLServerDao();
+        accountDao.transferir(accIdOrigen, accIdDestino, cantidad);
     }
 }

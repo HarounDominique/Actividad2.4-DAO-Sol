@@ -158,9 +158,11 @@ public class AccountSQLServerDao extends AbstractGenericDao<Account> implements 
             PreparedStatement updateDestino = con.prepareStatement("UPDATE [dbo].[ACCOUNT]\n" +
                     "SET [AMOUNT] = (AMOUNT+?) \n" +
                     "where [ACCOUNTNO] = ?");
-            PreparedStatement insertMov = con.prepareStatement("INSERT INTO [dbo].[ACCOUNT]\n" +
-                    "           ([EMPNO]\n" +
-                    "           ,[AMOUNT])\n" +
+            PreparedStatement insertMov = con.prepareStatement("INSERT INTO [dbo].[ACC_MOVEMENT]\n" +
+                    "           ([ACCOUNT_ORIGIN_ID]\n" +
+                    "           ,[ACCOUNT_DEST_ID]\n" +
+                    "           ,[AMOUNT]\n" +
+                    "           ,[DATETIME])\n" +
                     "     VALUES\n" +
                     "           (?, ?, ?, ?)");){
             con.setAutoCommit(false);
