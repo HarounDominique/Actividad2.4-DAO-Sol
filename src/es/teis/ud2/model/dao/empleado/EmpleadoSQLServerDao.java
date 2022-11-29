@@ -89,8 +89,8 @@ public class EmpleadoSQLServerDao extends AbstractGenericDao<Empleado>
         Departamento departamento = null;
 
         try (
-                 Connection conexion = this.dataSource.getConnection();  PreparedStatement sentencia
-                = conexion.prepareStatement("SELECT [EMPNO]\n"
+                 Connection conexion = this.dataSource.getConnection();
+                 PreparedStatement sentencia = conexion.prepareStatement("SELECT [EMPNO]\n"
                         + "      ,[ENAME]\n"
                         + "      ,[JOB]\n"
                         + "      ,[MGR]\n"
@@ -141,7 +141,8 @@ public class EmpleadoSQLServerDao extends AbstractGenericDao<Empleado>
         int contador = 0;
          int filasAfectadas =0;
         try (
-                 Connection conexion = this.dataSource.getConnection();  PreparedStatement pstmt = conexion.prepareStatement("UPDATE [dbo].[EMP]\n"
+                 Connection conexion = this.dataSource.getConnection();
+                 PreparedStatement pstmt = conexion.prepareStatement("UPDATE [dbo].[EMP]\n"
                 + "   SET [ENAME] = ? \n"
                 + "      ,[JOB] = ? \n"
                 + "      ,[MGR] = ? \n"
@@ -177,7 +178,8 @@ public class EmpleadoSQLServerDao extends AbstractGenericDao<Empleado>
     public boolean delete(int id) {
         int result = 0;
         try (
-                 Connection conexion = this.dataSource.getConnection();  PreparedStatement pstmt = conexion.prepareStatement("DELETE FROM EMP WHERE EMPNO=?");) {
+                 Connection conexion = this.dataSource.getConnection();
+                 PreparedStatement pstmt = conexion.prepareStatement("DELETE FROM EMP WHERE EMPNO=?");) {
 
             pstmt.setInt(1, id);
 

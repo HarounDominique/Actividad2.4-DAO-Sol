@@ -98,7 +98,5 @@ public class Main {
             ex.printStackTrace();
             System.err.println("Ha ocurrido una excepción: " + ex.getMessage());
         }
-
     }
-
 }
